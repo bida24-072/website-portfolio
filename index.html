@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Alex Rivera · Data Analyst & Full-Stack Dev</title>
+  <!-- Font Awesome 6 for professional icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* trending glassmorphism + gradient theme */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 60px;
+      padding: 0.8rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 1rem;
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e293b;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    /* profile section */
+    .profile-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+      background: white;
+      border-radius: 2.5rem;
+      padding: 2.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+      margin-bottom: 3rem;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .profile-pic-container {
+      flex: 0 0 auto;
+      position: relative;
+    }
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.3);
+      background: linear-gradient(145deg, #dbeafe, #ede9fe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      color: #2563eb;
+      background-color: #f1f5f9;
+    }
+
+    /* fallback if image doesn't load */
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-details h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #0f172a, #4f46e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .title-badge {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #1e40af;
+      font-weight: 600;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      margin: 0.5rem 0 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .skills-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 1.2rem 0;
+    }
+
+    .skill-tag {
+      background: white;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .skill-tag i {
+      color: #2563eb;
+    }
+
+    /* live python playground */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 650;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: #0f172a;
+    }
+
+    .python-card {
+      background: #0f172a;
+      border-radius: 2rem;
+      padding: 1.8rem;
+      color: #f1f5f9;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 35px -8px rgba(0,0,0,0.2);
+      border: 1px solid #334155;
+    }
+
+    .editor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .run-btn {
+      background: #2563eb;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0.6rem 1.8rem;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: 0.2s;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+    }
+
+    .run-btn:hover {
+      background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+      transform: scale(1.02);
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 1rem;
+      padding: 1rem;
+      font-family: 'Fira Code', monospace;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      resize: vertical;
+      margin-bottom: 1rem;
+    }
+
+    .output-box {
+      background: #1e293b;
+      border-radius: 1rem;
+      padding: 1rem;
+      min-height: 70px;
+      font-family: monospace;
+      color: #b9f5b0;
+      white-space: pre-wrap;
+      border: 1px solid #334155;
+    }
+
+    /* projects cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0 3rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 1.8rem;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
+      transition: all 0.25s;
+      border: 1px solid #f1f5f9;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 35px -12px rgba(37, 99, 235, 0.2);
+    }
+
+    .project-card i {
+      font-size: 2.2rem;
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    /* contact */
+    .contact-section {
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem;
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
+
+    .contact-info a {
+      text-decoration: none;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 0.8rem 0;
+      font-weight: 500;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 2.5rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .profile-section {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- sticky navbar -->
+    <nav class="navbar">
+      <div class="logo"><i class="fas fa-chart-line"></i> ARPortfolio</div>
+      <ul class="nav-links">
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#playground"><i class="fab fa-python"></i> Python</a></li>
+        <li><a href="#projects"><i class="fas fa-code"></i> Work</a></li>
+        <li><a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Profile with picture upload capability -->
+    <div id="home" class="profile-section">
+      <div class="profile-pic-container">
+        <div class="profile-pic" id="profileImageContainer">
+          <!-- default icon if no image -->
+          <i class="fas fa-user-astronaut" style="font-size: 5rem; color: #2563eb;"></i>
+        </div>
+        <div style="margin-top: 1rem; text-align: center;">
+          <label for="profileUpload" style="cursor: pointer; background: #f1f5f9; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">
+            <i class="fas fa-camera"></i> Change photo
+          </label>
+          <input type="file" id="profileUpload" accept="image/*" style="display: none;">
+        </div>
+      </div>
+      <div class="profile-details">
+        <h1>Alex Rivera</h1>
+        <div class="title-badge"><i class="fas fa-database"></i> Data Analyst & Full-Stack Developer</div>
+        <p style="font-size: 1.1rem; color: #334155; max-width: 500px;">
+          Turning raw data into insights and building end‑to‑end web applications. Python, SQL, and modern web stacks.
+        </p>
+        <div class="skills-cloud">
+          <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+          <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
+          <span class="skill-tag"><i class="fab fa-html5"></i> HTML</span>
+          <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+          <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+          <span class="skill-tag"><i class="fas fa-chart-bar"></i> Data Viz</span>
+          <span class="skill-tag"><i class="fas fa-mobile-alt"></i> Apps</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Python Code Feature (simulated with JS) -->
+    <div id="playground">
+      <h2 class="section-title"><i class="fab fa-python" style="color: #306998;"></i> Live Python Playground</h2>
+      <div class="python-card">
+        <div class="editor-header">
+          <span><i class="fas fa-terminal"></i> Try Python code (simulated)</span>
+          <button class="run-btn" id="runPythonBtn"><i class="fas fa-play"></i> Run Code</button>
+        </div>
+        <textarea id="pythonCode" placeholder="# Enter Python code (e.g., print('Hello, data!'))">import pandas as pd
+import numpy as np
+
+data = {'sales': [250, 470, 300], 'month': ['Jan','Feb','Mar']}
+df = pd.DataFrame(data)
+print(df)
+print('Average sales:', np.mean(df['sales']))</textarea>
+        <div style="font-weight: 500; margin-bottom: 0.3rem;"><i class="fas fa-chevron-right"></i> Output:</div>
+        <div class="output-box" id="pythonOutput">Click "Run Code" to see simulated output</div>
+        <p style="font-size: 0.7rem; margin-top: 0.5rem; color: #94a3b8;"><i class="fas fa-info-circle"></i> Browser-based simulation for portfolio demo. Full Python runs on backend.</p>
+      </div>
+    </div>
+
+    <!-- Projects / portfolio items -->
+    <div id="projects">
+      <h2 class="section-title"><i class="fas fa-laptop-code"></i> Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <i class="fas fa-chart-pie"></i>
+          <h3>Sales Dashboard</h3>
+          <p>Interactive analytics dashboard with Python (Pandas/Plotly) and SQL backend. Real-time KPI tracking.</p>
+        </div>
+        <div class="project-card">
+          <i class="fas fa-globe"></i>
+          <h3>E‑commerce Web App</h3>
+          <p>Full-stack app using HTML, CSS, JS & Python (Flask). User auth, cart, and payment integration.</p>
+        </div>
+        <div class="project-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Task Manager App</h3>
+          <p>Responsive web app with local storage, built with vanilla JS and modern CSS. Productivity tool.</p>
+        </div>
+        <div class="project-card">
+          <i class="fas fa-database"></i>
+          <h3>SQL Analytics</h3>
+          <p>Complex queries and data modeling for customer segmentation. PostgreSQL & Python integration.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="contact-section">
+      <div>
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;"><i class="fas fa-address-card"></i> Let's connect</h2>
+        <p style="color: #475569; margin-bottom: 1.5rem;">Available for freelance, full-time roles & collaborations.</p>
+        <div class="contact-info">
+          <a href="mailto:alex.rivera@data.dev"><i class="fas fa-envelope"></i> alex.rivera@data.dev</a>
+          <a href="#"><i class="fab fa-linkedin"></i> linkedin.com/in/alexrivera</a>
+          <a href="#"><i class="fab fa-github"></i> github.com/alex-rivera</a>
+          <a href="#"><i class="fas fa-map-pin"></i> New York, NY</a>
+        </div>
+      </div>
+      <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 1.5rem;">
+        <p style="font-weight: 600; margin-bottom: 0.5rem;"><i class="fas fa-clock"></i> Response time: within 24h</p>
+        <p style="font-size: 0.9rem;">I build data-driven solutions and modern web experiences.</p>
+        <div style="margin-top: 1rem;">
+          <span style="background: white; padding: 0.3rem 1rem; border-radius: 20px; margin-right: 0.5rem;"><i class="fab fa-python"></i> Python</span>
+          <span style="background: white; padding: 0.3rem 1rem; border-radius: 20px;"><i class="fas fa-code"></i> Full-Stack</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p>© 2025 Alex Rivera – Built with passion & modern stack.</p>
+    </div>
+  </div>
+
+  <script>
+    // ----- Profile picture upload functionality -----
+    const profileUpload = document.getElementById('profileUpload');
+    const profileContainer = document.getElementById('profileImageContainer');
+
+    profileUpload.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          // Clear container and add image
+          profileContainer.innerHTML = '';
+          const img = document.createElement('img');
+          img.src = event.target.result;
+          img.alt = 'Profile picture';
+          img.style.width = '100%';
+          img.style.height = '100%';
+          img.style.borderRadius = '50%';
+          img.style.objectFit = 'cover';
+          profileContainer.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // ----- Live Python simulation (JS-based interpreter-like output) -----
+    const runBtn = document.getElementById('runPythonBtn');
+    const pythonCodeArea = document.getElementById('pythonCode');
+    const outputDiv = document.getElementById('pythonOutput');
+
+    // Simple Python-like simulation for demo (handles print, basic pandas-like output)
+    function simulatePythonExecution(code) {
+      let output = '';
+      try {
+        // Very basic simulation: capture print statements and simple expressions
+        // This is not a real Python interpreter, but demonstrates portfolio interactivity.
+        const lines = code.split('\n');
+        for (let line of lines) {
+          line = line.trim();
+          if (line.startsWith('print(')) {
+            // extract content inside print()
+            const match = line.match(/print\((.*)\)/);
+            if (match) {
+              let content = match[1].trim();
+              // Remove quotes if string
+              if ((content.startsWith("'") && content.endsWith("'")) || 
+                  (content.startsWith('"') && content.endsWith('"'))) {
+                content = content.slice(1, -1);
+              } else if (content.includes('df')) {
+                // simulate dataframe print
+                output += '   sales month\n0    250   Jan\n1    470   Feb\n2    300   Mar\n';
+                continue;
+              } else if (content.includes('np.mean')) {
+                output += 'Average sales: 340.0\n';
+                continue;
+              }
+              output += content + '\n';
+            }
+          } else if (line.includes('import pandas') || line.includes('import numpy') || line.includes('data =')) {
+            // skip but acknowledge
+            continue;
+          } else if (line.startsWith('df =') || line.startsWith('print')) {
+            // handled
+            continue;
+          } else if (line !== '' && !line.startsWith('#')) {
+            // generic fallback
+            output += `[sim] ${line}\n`;
+          }
+        }
+        if (output.trim() === '') {
+          output = 'Code executed (simulation). Try print() statements.';
+        }
+      } catch (err) {
+        output = 'Error: ' + err.message;
+      }
+      return output;
+    }
+
+    runBtn.addEventListener('click', function() {
+      const userCode = pythonCodeArea.value;
+      outputDiv.textContent = 'Running...';
+      // small delay to simulate processing
+      setTimeout(() => {
+        const result = simulatePythonExecution(userCode);
+        outputDiv.textContent = result || '(no output)';
+      }, 200);
+    });
+
+    // Run default code on page load to show something
+    window.addEventListener('load', function() {
+      const defaultCode = pythonCodeArea.value;
+      const initialOutput = simulatePythonExecution(defaultCode);
+      outputDiv.textContent = initialOutput;
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
